@@ -10,7 +10,7 @@ CFLAGS = -Os -mmcu=$(DEVICE)
 
 all: boot.bin boot.hex
 
-boot.hex: boot.o
+boot.hex: boot
 	avr-objcopy -j .text -j .data -O ihex $< $@
 
 boot: boot.o
