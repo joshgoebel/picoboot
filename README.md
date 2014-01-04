@@ -1,5 +1,7 @@
 picoboot
 ========
+
+This is a fork of the picoboot project which can be found at:
 https://code.google.com/p/picoboot/
 
 ### ATtiny85 & ATtiny45 bootloader in 32 words (64 bytes)
