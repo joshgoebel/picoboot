@@ -3,7 +3,11 @@
 # @version: $Id$
 
 # any AVR MCUs with USI should work
-DEVICE = attiny85
+#DEVICE = attiny85
+
+# Settings to build for ATMega328 
+DEVICE = atmega328p
+LD_FLAGS = -T avr2.xn
 
 CC = avr-gcc
 CFLAGS = -Os -mmcu=$(DEVICE)
@@ -14,7 +18,7 @@ boot.hex: boot
 	avr-objcopy -j .text -j .data -O ihex $< $@
 
 boot: boot.o
-	$(CC) -o $@ $<
+	$(CC) $(LD_FLAGS) -o $@ $<
 
 boot.bin: boot
 	avr-objcopy -j .text -j .data -O binary $< $@
@@ -23,4 +27,4 @@ boot.bin: boot
 	$(CC) $(CFLAGS) -x assembler-with-cpp -c $< -o $@
 
 clean:
-	rm boot.o boot
+	rm -f boot.o boot boot.bin boot.hex	
